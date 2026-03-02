@@ -589,7 +589,10 @@ def get_notice_v2(notice_id, **kwargs):
 
     notice: Notice = (
         notice_query.filter(Notice.id == notice_id.upper())
-        .options(selectinload(Notice.cves), selectinload(Notice.releases))
+        .options(
+            selectinload(Notice.cves).selectinload(CVE.notices),
+            selectinload(Notice.releases),
+        )
         .one_or_none()
     )
 
