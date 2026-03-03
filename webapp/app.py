@@ -92,8 +92,7 @@ COMPRESS_MIMETYPES = [
 ]
 
 app = FlaskBase(
-    __name__,
-    "ubuntu-com-security-api",
+    __name__, "ubuntu-com-security-api", compress_mimetypes=COMPRESS_MIMETYPES
 )
 
 app.config.update(
