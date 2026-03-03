@@ -204,9 +204,10 @@ def get_cves(**kwargs):
     total_results = cves_query.order_by(None).count()
 
     cves_query = cves_query.options(
+        selectinload(CVE.statuses),
         selectinload(cve_notices_query).options(
             selectinload(Notice.cves).options(load_only(CVE.id))
-        )
+        ),
     )
 
     cves = cves_query.limit(limit).offset(offset).all()
