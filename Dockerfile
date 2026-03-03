@@ -34,7 +34,6 @@ RUN rm -rf package.json
 
 # Set revision ID
 ARG BUILD_ID
-ENV TALISKER_REVISION_ID "${BUILD_ID}"
 
 # Setup commands to run server
 ENTRYPOINT ["./entrypoint"]
